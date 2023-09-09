@@ -1,19 +1,21 @@
 //
-//  LoginViewModel.swift
+//  RegisterViewModel.swift
 //  chatApp
 //
-//  Created by apple on 08.09.2023.
+//  Created by apple on 09.09.2023.
 //
+
+
 
 import UIKit
 
-
-
-struct LoginViewModel: AuthViewModelProtocol {
+struct RegisterViewModel: AuthViewModelProtocol {
     var email: String?
     var password: String?
+    var fullname: String?
+    var username: String?
     var formIsFaild: Bool{
-        return email?.isEmpty == false && password?.isEmpty == false
+        return email?.isEmpty == false && password?.isEmpty == false && fullname?.isEmpty == false && username?.isEmpty == false
     }
     
     var backgroundColor: UIColor {

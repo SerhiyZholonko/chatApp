@@ -10,61 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     //MARK: - Properties
-    
     var viewModel = LoginViewModel()
-    let welcomeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "HEY, WELCOME"
-        label.font = .boldSystemFont(ofSize: 20)
-        label.tintColor = .label
-        return label
-    }()
-    private var profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "profile")
-        iv.contentMode = .scaleAspectFit
-        iv.setDimensions(height: 50, width: 50)
-        return iv
-    }()
-    private let emailTF: UITextField = {
-        let tf = UITextField()
-        tf.tintColor = .label
-        tf.backgroundColor = .secondarySystemBackground
-        tf.setHeight (50)
-        tf.placeholder = "Email"
-        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        tf.leftViewMode = .always
-        tf.leftView = leftView
-        tf.layer.cornerRadius = 6
-        tf.keyboardType = .emailAddress
-        return tf
-    }()
-    private let passwordTF: UITextField = {
-        let tf = UITextField()
-        tf.tintColor = .label
-        tf.backgroundColor = .secondarySystemBackground
-        tf.setHeight (50)
-        tf.placeholder = "Password"
-        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        tf.leftViewMode = .always
-        tf.leftView = leftView
-        tf.layer.cornerRadius = 6
-        tf.isSecureTextEntry = true
-        return tf
-    }()
-    private lazy var loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 19)
-        button.tintColor = .white
-        button.backgroundColor = viewModel.backgroundColor
-        button.setTitleColor(viewModel.titleColor, for: .normal)
-        button.setHeight(50)
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(handleLoginVC), for: .touchUpInside)
-        button.isEnabled = false
-        return button
-    }()
+    let welcomeLabel = CustomLabel(textLabel: "HELLO, WELCOME", fontLabel: .boldSystemFont(ofSize: 20))
+    private var profileImageView = CustomImageView(image: UIImage(named: "teamwork"), width: 50, height: 50)
+    private let emailTF: CustomTextField = .init(placeholder: "Email", keyboardType: .emailAddress)
+    private let passwordTF: CustomTextField = .init(placeholder: "Password", isSecureText: true)
+
+    private lazy var loginButton = AuthButton(viewModel: viewModel, title: "Login")
     private lazy var forgetPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .label
@@ -85,30 +37,29 @@ class LoginViewController: UIViewController {
         button.addTarget(self, action: #selector(handleDontHeveAccountButton), for: .touchUpInside)
         return button
     }()
-    private let contLable: UILabel = {
-        let label = UILabel()
-        label.text = "or contiue with Google"
-        label.textColor = .lightGray
-        return label
-    }()
+    private let contLable = CustomLabel(textLabel: "or contiue with Google", textColorLabel: .lightGray)
     private lazy var googleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Google", for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.tintColor = .white
-        button.backgroundColor = .black
-        button.setHeight(50)
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
-        return button
-    }()
+          let button = UIButton(type: .system)
+          button.setTitle("Google", for: .normal)
+          button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.tintColor = .label.complementaryColor()
+          button.backgroundColor = .label
+          button.setHeight(50)
+          button.layer.cornerRadius = 10
+          button.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
+          return button
+      }()
     //MARK: - Lilecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureForTextFeild()
+        buttonConfigure()
     }
     //MARK: - Functions
+    private func buttonConfigure() {
+        loginButton.delegate = self
+    }
     private func configureUI() {
         view.backgroundColor = .systemBackground
         addConstraints()
@@ -146,12 +97,7 @@ class LoginViewController: UIViewController {
             .editingChanged)
                       }
     //MARK: - OBJC func
-    
-    @objc private func handleLoginVC() {
-        
-    }
     @objc private func handleForgetPassword() {
-        
     }
     @objc private func handleDontHeveAccountButton() {
         let vc = RegisterViewController()
@@ -168,5 +114,12 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = viewModel.formIsFaild
         loginButton.backgroundColor = viewModel.backgroundColor
         loginButton.setTitleColor(viewModel.titleColor, for:.normal)
+    }
+}
+//MARK: -
+
+extension LoginViewController: AuthButtonDelegate {
+    @objc func handleLoginVC() {
+        print("Login..")
     }
 }
