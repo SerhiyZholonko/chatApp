@@ -16,7 +16,7 @@ class AuthButton: UIButton {
     //MARK: - Properties
     weak var delegate: AuthButtonDelegate?
     //MARK: - Init
-    init(viewModel: AuthViewModelProtocol, title: String) {
+    init(viewModel: AuthViewModelProtocol, title: String, bourderColor: UIColor? = nil, bourderWight: CGFloat? = nil) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         titleLabel?.font = .boldSystemFont(ofSize: 19)
@@ -27,6 +27,12 @@ class AuthButton: UIButton {
         layer.cornerRadius = 10
         addTarget(self, action: #selector(handleLoginVC), for: .touchUpInside)
         isEnabled = false
+        if let bourderColor = bourderColor {
+            layer.borderColor = bourderColor.cgColor
+        }
+        if let bourderWight = bourderWight {
+            layer.borderWidth = bourderWight
+        }
     }
     
     required init?(coder: NSCoder) {

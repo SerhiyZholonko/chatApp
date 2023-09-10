@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseCore
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,10 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backIndicatorImage = backImg
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImg
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(.init(horizontal: -1000, vertical: 0), for: .default)
-        UITableView.appearance().tintColor = .white
         UITabBar.appearance().barTintColor = UIColor.black
     }
     
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+      return GIDSignIn.sharedInstance.handle(url)
+    }
+
+
     
     
 }

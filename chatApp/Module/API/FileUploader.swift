@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import SDWebImage
 
 
 struct FileUploader {
@@ -30,5 +31,16 @@ struct FileUploader {
                 completion(fileUrl)
             }
         }
+    }
+    static func getImage (withImageURL imageURL: URL, completion: @escaping (UIImage) -> Void){
+        SDWebImageManager.shared.loadImage(with: imageURL, options: .continueInBackground, progress: nil) { image, data, error, cashType, finised, url in
+            if let error = error{
+                print(error.localizedDescription)
+                return
+            }
+            guard let image = image else {return}
+            completion(image)
+        }
+        
     }
 }

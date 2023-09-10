@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Firebase
 
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIAnimatable {
     //MARK: - Properties
     var viewModel = RegisterViewModel()
     
@@ -23,18 +24,18 @@ class RegisterViewController: UIViewController {
     private lazy var avatarButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .lightGray
+        button.tintColor = .systemGreen.withAlphaComponent(0.7)
         button.setDimensions(height: 150, width: 150)
         button.layer.cornerRadius = 75
         button.addTarget(self, action: #selector(handleAvatarButton), for: .touchUpInside)
         return button
     }()
-    private let emailTF: CustomTextField = .init(placeholder: "Email", keyboardType: .emailAddress)
-    private let passwordTF: CustomTextField = .init(placeholder: "Password", isSecureText: true)
-    private let fullnameTF: CustomTextField = .init(placeholder: "Fullname")
-    private let usernameTF: CustomTextField = .init(placeholder: "Username")
+    private let emailTF: CustomTextField = .init(placeholder: "Email", keyboardType: .emailAddress, bourderColor: .systemGreen, bourderWight: 2)
+    private let passwordTF: CustomTextField = .init(placeholder: "Password", isSecureText: true, bourderColor: .systemGreen, bourderWight: 2)
+    private let fullnameTF: CustomTextField = .init(placeholder: "Fullname", bourderColor: .systemGreen, bourderWight: 2)
+    private let usernameTF: CustomTextField = .init(placeholder: "Username", bourderColor: .systemGreen, bourderWight: 2)
     
-    private lazy var signUpButton = AuthButton(viewModel: viewModel, title: "Sign Up")
+    private lazy var signUpButton = AuthButton(viewModel: viewModel, title: "Sign Up", bourderColor: .systemGreen, bourderWight: 2)
     //MARK: - Lilecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,6 @@ class RegisterViewController: UIViewController {
                 .editingChanged)
     }
     private func addConstraints() {
-        
         view.addSubview(avatarButton)
         avatarButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 20)
         avatarButton.centerX(inView: view)
@@ -155,11 +155,18 @@ extension RegisterViewController: AuthButtonDelegate {
               let image = avatarButton.backgroundImage(for: .normal) else { return }
         
         let creadtional = AuthCreadtion(email: email, password: password, username: username, fullname: fullname, profileImage: image)
-        AuthService.registerUser(creadtional: creadtional) { error in
+        AuthService.registerUser(creadtional: creadtional) { [weak self] error in
             if let error = error {
-                print(error.localizedDescription)
+                self?.errorLoadingAnimation(error: error.localizedDescription)
                 return
             }
+            guard let uid = Auth.auth().currentUser?.uid else {return}
+            UserServiece.fetchUser(uid: uid) { user in
+                let vc = ConversationViewController(user: user)
+                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.succeedLoadingAnimation()
+            }
+          
         }
     }
     

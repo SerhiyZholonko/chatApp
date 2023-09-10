@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,16 +14,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let vc = LoginViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        window.rootViewController = nav
         self.window = window
-        window.makeKeyAndVisible()
+        configureInitialviewControlr()
     }
 
-   
+    
+    func configureInitialviewControlr() {
+     
+        let loginVC = LoginViewController()
+        if let uid = Auth.auth().currentUser?.uid {
+            UserServiece.fetchUser(uid: uid) { [weak self] user in
+                let conversationVC = ConversationViewController(user: user)
+                let nav = UINavigationController(rootViewController: conversationVC)
+                self?.window?.rootViewController = nav
+            }
+            
+        } else {
+            let nav = UINavigationController(rootViewController: loginVC)
+            self.window?.rootViewController = nav
+        }
+        window?.makeKeyAndVisible()
+    }
 }
 

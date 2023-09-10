@@ -11,7 +11,7 @@ class CustomTextField: UITextField {
     //MARK: - Properties
     
     //MARK: - Init
-    init(placeholder: String, keyboardType: UIKeyboardType = .default, isSecureText: Bool = false) {
+    init(placeholder: String, keyboardType: UIKeyboardType = .default, isSecureText: Bool = false, bourderColor: UIColor? = nil, bourderWight: CGFloat? = nil) {
         super.init(frame: .zero)
         borderStyle = .none
         textColor = .label
@@ -28,6 +28,12 @@ class CustomTextField: UITextField {
         self.placeholder = placeholder
         self.keyboardType = keyboardType
         self.isSecureTextEntry = isSecureText
+        if let bourderColor = bourderColor {
+            layer.borderColor = bourderColor.cgColor
+        }
+        if let bourderWight = bourderWight {
+            layer.borderWidth = bourderWight
+        }
     }
     
     required init?(coder: NSCoder) {

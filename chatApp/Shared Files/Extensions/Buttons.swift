@@ -25,5 +25,6 @@ extension UIButton {
         attributedText.append(boldPart)
         
         self.setAttributedTitle(attributedText, for: .normal)
+    
     }
 }
