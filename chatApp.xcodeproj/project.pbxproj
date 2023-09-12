@@ -10,9 +10,16 @@
 		18159B232AAC91EC007EE035 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18159B222AAC91EC007EE035 /* AuthService.swift */; };
 		18159B262AAC9580007EE035 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18159B252AAC9580007EE035 /* Constants.swift */; };
 		18159B282AAC9B68007EE035 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18159B272AAC9B68007EE035 /* FileUploader.swift */; };
+		1823F3E52AAF3B6F00602E82 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1823F3E42AAF3B6F00602E82 /* ChatViewController.swift */; };
+		1823F3E92AAF43AB00602E82 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1823F3E82AAF43AB00602E82 /* ChatViewCell.swift */; };
 		182A89BC2AACBABE00B08DBC /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A89BB2AACBABE00B08DBC /* ConversationViewController.swift */; };
 		182A89BE2AACC37200B08DBC /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A89BD2AACC37200B08DBC /* UIAnimatable.swift */; };
 		182A89C12AACC43000B08DBC /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 182A89C02AACC43000B08DBC /* ProgressHUD */; };
+		182D81FC2AAEBC6E00C35D5C /* BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D81FB2AAEBC6E00C35D5C /* BarButtonItem.swift */; };
+		182D81FE2AAEC2A800C35D5C /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D81FD2AAEC2A800C35D5C /* NavigationBar.swift */; };
+		182D82002AAED18400C35D5C /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D81FF2AAED18400C35D5C /* NewChatViewController.swift */; };
+		182D82072AAEF4D400C35D5C /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D82062AAEF4D400C35D5C /* ConversationCell.swift */; };
+		182D820C2AAF1BBA00C35D5C /* NewChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D820B2AAF1BBA00C35D5C /* NewChatCell.swift */; };
 		1832431D2AAC4B400033F2AA /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832431C2AAC4B400033F2AA /* AuthButton.swift */; };
 		183243202AAC4ECE0033F2AA /* AuthViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832431F2AAC4ECE0033F2AA /* AuthViewModelProtocol.swift */; };
 		183243222AAC64F70033F2AA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183243212AAC64F70033F2AA /* UIColor.swift */; };
@@ -44,14 +51,23 @@
 		186182402AADD37C00C69A88 /* ImageTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861823F2AADD37C00C69A88 /* ImageTextButton.swift */; };
 		186182422AADF03800C69A88 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186182412AADF03800C69A88 /* File.swift */; };
 		186182442AADF19A00C69A88 /* UserServiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186182432AADF19A00C69A88 /* UserServiece.swift */; };
+		18999A852AB0308F0094E18A /* CustomeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A842AB0308F0094E18A /* CustomeInputView.swift */; };
+		18999A882AB031B20094E18A /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A872AB031B20094E18A /* InputTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18159B222AAC91EC007EE035 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		18159B252AAC9580007EE035 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18159B272AAC9B68007EE035 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
+		1823F3E42AAF3B6F00602E82 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		1823F3E82AAF43AB00602E82 /* ChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewCell.swift; sourceTree = "<group>"; };
 		182A89BB2AACBABE00B08DBC /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		182A89BD2AACC37200B08DBC /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
+		182D81FB2AAEBC6E00C35D5C /* BarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItem.swift; sourceTree = "<group>"; };
+		182D81FD2AAEC2A800C35D5C /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		182D81FF2AAED18400C35D5C /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
+		182D82062AAEF4D400C35D5C /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		182D820B2AAF1BBA00C35D5C /* NewChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatCell.swift; sourceTree = "<group>"; };
 		1832431C2AAC4B400033F2AA /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		1832431F2AAC4ECE0033F2AA /* AuthViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelProtocol.swift; sourceTree = "<group>"; };
 		183243212AAC64F70033F2AA /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -76,6 +92,8 @@
 		1861823F2AADD37C00C69A88 /* ImageTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextButton.swift; sourceTree = "<group>"; };
 		186182412AADF03800C69A88 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		186182432AADF19A00C69A88 /* UserServiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiece.swift; sourceTree = "<group>"; };
+		18999A842AB0308F0094E18A /* CustomeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeInputView.swift; sourceTree = "<group>"; };
+		18999A872AB031B20094E18A /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +125,32 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		1823F3E32AAF3B5300602E82 /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1823F3E62AAF436D00602E82 /* Controller */,
+				1823F3E72AAF438400602E82 /* Cell */,
+				18999A832AB0307F0094E18A /* View */,
+			);
+			path = ChatViewController;
+			sourceTree = "<group>";
+		};
+		1823F3E62AAF436D00602E82 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1823F3E42AAF3B6F00602E82 /* ChatViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1823F3E72AAF438400602E82 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1823F3E82AAF43AB00602E82 /* ChatViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		182A89B92AACBA9E00B08DBC /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,9 +163,62 @@
 		182A89BA2AACBAA700B08DBC /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				182A89BB2AACBABE00B08DBC /* ConversationViewController.swift */,
+				1823F3E32AAF3B5300602E82 /* ChatViewController */,
+				182D82012AAEF48F00C35D5C /* ConversationViewController */,
+				182D82082AAEFEF800C35D5C /* NewChatViewController */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		182D82012AAEF48F00C35D5C /* ConversationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				182D82052AAEF4BE00C35D5C /* Controller */,
+				182D82032AAEF4A700C35D5C /* Cell */,
+			);
+			path = ConversationViewController;
+			sourceTree = "<group>";
+		};
+		182D82032AAEF4A700C35D5C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				182D82062AAEF4D400C35D5C /* ConversationCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		182D82052AAEF4BE00C35D5C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				182A89BB2AACBABE00B08DBC /* ConversationViewController.swift */,
+			);
+			name = Controller;
+			path = Cell/Controller;
+			sourceTree = "<group>";
+		};
+		182D82082AAEFEF800C35D5C /* NewChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				182D82092AAEFF0400C35D5C /* Controller */,
+				182D820A2AAF1BB200C35D5C /* Cell */,
+			);
+			path = NewChatViewController;
+			sourceTree = "<group>";
+		};
+		182D82092AAEFF0400C35D5C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				182D81FF2AAED18400C35D5C /* NewChatViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		182D820A2AAF1BB200C35D5C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				182D820B2AAF1BBA00C35D5C /* NewChatCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		1832431E2AAC4EB10033F2AA /* Protocols */ = {
@@ -246,6 +343,8 @@
 				1853AA172AAB500400C7BD01 /* Buttons.swift */,
 				183243212AAC64F70033F2AA /* UIColor.swift */,
 				1861823D2AADCD5E00C69A88 /* String.swift */,
+				182D81FB2AAEBC6E00C35D5C /* BarButtonItem.swift */,
+				182D81FD2AAEC2A800C35D5C /* NavigationBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,8 +357,25 @@
 				183243252AAC79090033F2AA /* CustomImageView.swift */,
 				183243232AAC72F80033F2AA /* CustomLabel.swift */,
 				1861823F2AADD37C00C69A88 /* ImageTextButton.swift */,
+				18999A872AB031B20094E18A /* InputTextView.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		18999A832AB0307F0094E18A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18999A862AB030AE0094E18A /* CustomeInputView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18999A862AB030AE0094E18A /* CustomeInputView */ = {
+			isa = PBXGroup;
+			children = (
+				18999A842AB0308F0094E18A /* CustomeInputView.swift */,
+			);
+			path = CustomeInputView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,20 +469,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182D81FE2AAEC2A800C35D5C /* NavigationBar.swift in Sources */,
 				1853AA182AAB500400C7BD01 /* Buttons.swift in Sources */,
 				183243222AAC64F70033F2AA /* UIColor.swift in Sources */,
 				1861823E2AADCD5E00C69A88 /* String.swift in Sources */,
 				186182442AADF19A00C69A88 /* UserServiece.swift in Sources */,
+				18999A882AB031B20094E18A /* InputTextView.swift in Sources */,
 				182A89BC2AACBABE00B08DBC /* ConversationViewController.swift in Sources */,
+				1823F3E92AAF43AB00602E82 /* ChatViewCell.swift in Sources */,
 				1832431D2AAC4B400033F2AA /* AuthButton.swift in Sources */,
+				18999A852AB0308F0094E18A /* CustomeInputView.swift in Sources */,
 				1853AA0D2AAB194800C7BD01 /* LoginViewController.swift in Sources */,
 				1853AA0F2AAB1A3000C7BD01 /* RegisterViewController.swift in Sources */,
+				182D820C2AAF1BBA00C35D5C /* NewChatCell.swift in Sources */,
 				18159B262AAC9580007EE035 /* Constants.swift in Sources */,
 				1853AA122AAB1CD800C7BD01 /* Views.swift in Sources */,
 				186182422AADF03800C69A88 /* File.swift in Sources */,
 				18159B282AAC9B68007EE035 /* FileUploader.swift in Sources */,
 				185411D22AAC27760086A8EF /* CustomTextField.swift in Sources */,
+				182D81FC2AAEBC6E00C35D5C /* BarButtonItem.swift in Sources */,
 				1853AA1A2AAB55D700C7BD01 /* LoginViewModel.swift in Sources */,
+				182D82072AAEF4D400C35D5C /* ConversationCell.swift in Sources */,
 				1853A9F02AAB16B600C7BD01 /* AppDelegate.swift in Sources */,
 				183243262AAC79090033F2AA /* CustomImageView.swift in Sources */,
 				185411D42AAC33E70086A8EF /* RegisterViewModel.swift in Sources */,
@@ -374,7 +497,9 @@
 				18159B232AAC91EC007EE035 /* AuthService.swift in Sources */,
 				183243202AAC4ECE0033F2AA /* AuthViewModelProtocol.swift in Sources */,
 				182A89BE2AACC37200B08DBC /* UIAnimatable.swift in Sources */,
+				182D82002AAED18400C35D5C /* NewChatViewController.swift in Sources */,
 				186182402AADD37C00C69A88 /* ImageTextButton.swift in Sources */,
+				1823F3E52AAF3B6F00602E82 /* ChatViewController.swift in Sources */,
 				1853A9F22AAB16B600C7BD01 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

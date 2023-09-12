@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
     }
     private func navBarConfigure() {
-        UINavigationBar.appearance().tintColor = .label
+        UINavigationBar.appearance().tintColor = .systemGreen
         let backImg = UIImage (named: "chevron.backward")
         UINavigationBar.appearance().backIndicatorImage = backImg
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImg
