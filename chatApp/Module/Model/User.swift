@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  User.swift
 //  chatApp
 //
 //  Created by apple on 10.09.2023.

@@ -41,10 +41,9 @@ class InputTextView: UITextView {
     
     // Function to calculate and set the intrinsic content size based on content
     @objc private func textDidChange() {
-        let size = CGSize(width: frame.width, height: .greatestFiniteMagnitude)
-        let _ = sizeThatFits(size)
-        self.invalidateIntrinsicContentSize()
-    }
+          placeHolderLabel.isHidden = !text.isEmpty
+          self.invalidateIntrinsicContentSize()
+      }
 
     override var intrinsicContentSize: CGSize {
         let size = CGSize(width: frame.width, height: .greatestFiniteMagnitude)

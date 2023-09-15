@@ -17,6 +17,7 @@ class CustomImageView: UIImageView {
         if let cornerRedius = cornerRedius {
             layer.cornerRadius = cornerRedius
             self.contentMode = contentMode
+            self.clipsToBounds = true
         }
         if let width = width {
             setWidth(width)

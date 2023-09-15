@@ -10,6 +10,11 @@ import UIKit
 class ConversationCell: UITableViewCell {
     //MARK: - Properties
     static let identifier = "ConversationCell"
+    var viewModel: MessageViewModel? {
+        didSet{
+            configure()
+        }
+    }
     private let profileImageView = CustomImageView(image: #imageLiteral(resourceName: "Google_Contacts_logo copy"), width: 60, height: 60, cornerRedius: 30, background: .lightGray)
     private let fullname = CustomLabel(textLabel: "Fullname", fontLabel: .boldSystemFont(ofSize: 16))
     private let recentMessage = CustomLabel(textLabel: "recent message recent message recent", textColorLabel: .lightGray, numberOfLines: 2)
@@ -28,6 +33,16 @@ class ConversationCell: UITableViewCell {
         selectionStyle = .none
         addConstraints()
         
+    }
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.profileImageView.sd_setImage(with: viewModel.profileImageURL)
+            self?.fullname.text = viewModel.fullName
+            self?.recentMessage.text = viewModel.messageText
+            self?.dateLabel.text = viewModel.timestampString
+        }
+       
     }
     private func addConstraints() {
         addSubview(profileImageView)

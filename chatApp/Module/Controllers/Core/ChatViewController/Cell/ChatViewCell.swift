@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChatCell: UICollectionViewCell {
     //MARK: - Properties
     static let identifier = "ChatViewCell"
+    
+    var viewModel: MessageViewModel? {
+        didSet {
+            configure()
+        }
+    }
     
     var bubbleRightAnchor: NSLayoutConstraint!
     var bubbleLeftAnchor: NSLayoutConstraint!
@@ -18,7 +25,7 @@ class ChatCell: UICollectionViewCell {
 
     
     private let profileImageView = CustomImageView( width: 30, height: 30, cornerRedius: 15, background: .systemGray)
-    private let dateLabel = CustomLabel(textLabel: "10/10/2023")
+    private let dateLabel = CustomLabel(textLabel: "10/10/2023", textColorLabel: .lightGray)
     
     private let bubbleContainer : UIView = {
         let view = UIView()
@@ -70,12 +77,22 @@ class ChatCell: UICollectionViewCell {
         dateLabel.anchor(bottom: bottomAnchor)
 
     }
-    public func configure(text: String, isUserMessage: Bool) {
-        bubbleLeftAnchor.isActive = !isUserMessage
-        bubbleRightAnchor.isActive = isUserMessage
-        dateLeftAnchor.isActive = !isUserMessage
-        dateRightAnchor.isActive = isUserMessage
-
-        textView.text = text
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        bubbleContainer.backgroundColor = viewModel.messageBacgroungColor
+        textView.text = viewModel.messageText
+        textView.textColor = viewModel.messageColor
+        
+        bubbleRightAnchor.isActive = viewModel.rightAnchorActive
+        dateRightAnchor.isActive = viewModel.rightAnchorActive
+        
+        bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
+        dateLeftAnchor.isActive = viewModel.leftAnchorActive
+        
+        profileImageView.sd_setImage(with: viewModel.profileImageURL)
+        profileImageView.isHidden = viewModel.shouldshowHideProfileImage
+        guard let timestampString = viewModel.timestampString else { return }
+        dateLabel.text = timestampString
     }
+
 }

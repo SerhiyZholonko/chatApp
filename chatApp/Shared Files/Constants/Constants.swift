@@ -9,5 +9,8 @@ import Firebase
 
 
 struct Constants {
-   static let CollectionUsers = Firestore.firestore().collection("users")
+    static let CollectionUsers = Firestore.firestore().collection("users")
+    static let CollectionMessage = Firestore.firestore().collection("messages")
+    
 }
+

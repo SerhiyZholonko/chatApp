@@ -10,12 +10,16 @@ import Firebase
 
 
 
-class ConversationViewController: UIViewController {
+class ConversationViewController: UIViewController, UIAnimatable {
     //MARK: - Properties
     private var user: User
-    
     private let tableView = UITableView()
-
+    private var conversations: [Message] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    private var conversationDictionary = [String: Message]()
     //MARK: - Livecycle
     init(user: User) {
         self.user = user
@@ -29,14 +33,11 @@ class ConversationViewController: UIViewController {
         super.viewDidLoad()
         configureNavBar()
         getUser()
-       print(user.username)
+      fetchConversations()
         configureTableView()
     }
    
-    override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
-        navigationBarConfigure()
-     }
+ 
     //MARK: - Functions
     private  func configureNavBar() {
         view.backgroundColor = .systemBackground
@@ -72,16 +73,18 @@ class ConversationViewController: UIViewController {
              self?.user = user
          }
     }
-    private func navigationBarConfigure() {
-        // Disable the back indicator image for this view controller
-               navigationController?.navigationBar.backIndicatorImage = nil
-               navigationController?.navigationBar.backIndicatorTransitionMaskImage = nil
-               
-               // Adjust the back button title position
-               let backButtonImage = UIImage() // Create an empty UIImage
-               navigationController?.navigationBar.backIndicatorImage = backButtonImage
-               navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
 
+    private func openChatVithUser(withCurrentUser currentUser: User, withOtherUser otherUser: User) {
+        let vc = ChatViewController(otherUser: otherUser, currentUser: currentUser)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    private func fetchConversations (){
+        MessageService.fetchRecentMessages { conversations in
+            conversations.forEach { conversation in
+                self.conversationDictionary[conversation.chatPartnerID] = conversation
+            }
+            self.conversations = Array(self.conversationDictionary.values)
+        }
     }
     @objc private func handleSignOut() {
         AuthService.signOut{ error in
@@ -99,6 +102,7 @@ class ConversationViewController: UIViewController {
     }
     @objc private func handleNewChat() {
         let vc = NewChatViewController()
+        vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
@@ -111,17 +115,34 @@ class ConversationViewController: UIViewController {
 
 extension ConversationViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.identifier, for: indexPath) as! ConversationCell
+        let conversation = conversations[indexPath.item]
+        cell.viewModel = MessageViewModel(message: conversation)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ChatViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        navigationController?.pushViewController(vc, animated: true)
+        showLoadingAnimation()
+        let coversation = conversations[indexPath.item]
+        UserServiece.fetchUser(uid: coversation.chatPartnerID) { [self] otherUser in
+            self.hideLoadingAnimation()
+            self.openChatVithUser(withCurrentUser: user, withOtherUser: otherUser)
+        }
+    }
+    
+    
+}
+
+
+//MARK: -
+extension ConversationViewController: NewChatvitwControllerDelegate {
+    func controller(_ vc: NewChatViewController, wantChatwithUser otherUser: User) {
+        vc.dismiss(animated: true)
+        openChatVithUser(withCurrentUser: user, withOtherUser: otherUser)
     }
     
     
