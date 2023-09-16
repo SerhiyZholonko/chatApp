@@ -34,7 +34,13 @@ class ChatViewController: UICollectionViewController {
         configureUI()
         configureCollectionView()
         fetchMessages()
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.markReadAllMessge()
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        markReadAllMessge()
     }
     override var inputAccessoryView: UIView? {
         return customInputView
@@ -70,7 +76,9 @@ class ChatViewController: UICollectionViewController {
           let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
           customInputView.addGestureRecognizer(tapGesture)
       }
-
+    private func  markReadAllMessge() {
+        MessageService.markReadAllMessage(otherUser: otherUser)
+    }
       @objc private func handleTap() {
           // Handle the tap action here
           // You can leave this empty or perform some custom action if needed
@@ -117,13 +125,15 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
 
 extension ChatViewController: CustomeInputViewDelegate {
     func inputView(_ view: CustomeInputView, wantUploadMessage message: String) {
-        
-        MessageService.uploadMessage(message: message, currentUser: currentUser, otherUser: otherUser) { error in
-            
+        MessageService.fetchSingleResentMessage(otherUser: otherUser) { [self] unReadMessage in
+            MessageService.uploadMessage(message: message, currentUser: currentUser, unReadCounter: unReadMessage + 1, otherUser: otherUser) { [self] _ in
+                collectionView.reloadData()
+            }
         }
-        
+      
         customInputView.clearTextView()
-        collectionView.reloadData() 
+
+       
     }
     
     

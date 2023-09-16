@@ -14,9 +14,33 @@ class ConversationViewController: UIViewController, UIAnimatable {
     //MARK: - Properties
     private var user: User
     private let tableView = UITableView()
+    private let unReadMsgLabel: UILabel = {
+        let label = UILabel ()
+        label.text = "8"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 18)
+        label.textColor = .white
+        label.backgroundColor = .systemGreen
+        label.setDimensions(height: 40, width: 40)
+        label.layer.cornerRadius = 20
+        label.clipsToBounds = true
+        label.isHidden = true
+        return label
+    }()
     private var conversations: [Message] = [] {
         didSet {
+            getTotalAmount(conversations: conversations)
             tableView.reloadData()
+        }
+    }
+    private var totalAmount: Int? {
+        didSet {
+            guard let totalAmount = totalAmount else { return }
+            unReadMsgLabel.isHidden = totalAmount == 0
+            DispatchQueue.main.async {[self] in
+                
+                unReadMsgLabel.text = "\(totalAmount)"
+            }
         }
     }
     private var conversationDictionary = [String: Message]()
@@ -66,6 +90,8 @@ class ConversationViewController: UIViewController, UIAnimatable {
     private func addConstraints() {
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingLeft: 15, paddingRight: 15)
+        view.addSubview(unReadMsgLabel)
+        unReadMsgLabel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 20, paddingBottom: 20)
     }
     private func getUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
@@ -73,7 +99,11 @@ class ConversationViewController: UIViewController, UIAnimatable {
              self?.user = user
          }
     }
-
+    private func getTotalAmount(conversations: [Message] ) {
+        var tempAmount: Int = 0
+        conversations.forEach { tempAmount += $0.newMessage}
+        self.totalAmount = tempAmount
+    }
     private func openChatVithUser(withCurrentUser currentUser: User, withOtherUser otherUser: User) {
         let vc = ChatViewController(otherUser: otherUser, currentUser: currentUser)
         navigationController?.pushViewController(vc, animated: true)
@@ -133,8 +163,6 @@ extension ConversationViewController: UITableViewDelegate,UITableViewDataSource 
             self.openChatVithUser(withCurrentUser: user, withOtherUser: otherUser)
         }
     }
-    
-    
 }
 
 

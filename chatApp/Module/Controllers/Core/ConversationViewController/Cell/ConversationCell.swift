@@ -10,6 +10,18 @@ import UIKit
 class ConversationCell: UITableViewCell {
     //MARK: - Properties
     static let identifier = "ConversationCell"
+    private let unReadMsgLabel: UILabel = {
+        let label = UILabel ()
+        label.text = "7"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 18)
+        label.textColor = .white
+        label.backgroundColor = .systemGreen
+        label.setDimensions(height: 30, width: 30)
+        label.layer.cornerRadius = 15
+        label.clipsToBounds = true
+        return label
+    }()
     var viewModel: MessageViewModel? {
         didSet{
             configure()
@@ -41,6 +53,8 @@ class ConversationCell: UITableViewCell {
             self?.fullname.text = viewModel.fullName
             self?.recentMessage.text = viewModel.messageText
             self?.dateLabel.text = viewModel.timestampString
+            self?.unReadMsgLabel.text = "\(viewModel.unReadCount)"
+            self?.unReadMsgLabel.isHidden = viewModel.showIdHideUnreadLabel
         }
        
     }
@@ -49,18 +63,22 @@ class ConversationCell: UITableViewCell {
         profileImageView.anchor(left: leftAnchor)
         profileImageView.centerY(inView: self)
         
-        addSubview(dateLabel)
-        dateLabel.anchor(right: rightAnchor, paddingRight: 15, width: 100)
-        dateLabel.centerY(inView: self)
-        let vStackView = UIStackView(arrangedSubviews: [
+        let dateCounterStack = UIStackView(arrangedSubviews: [
+        dateLabel, unReadMsgLabel
+        ])
+        dateCounterStack.axis = .vertical
+        dateCounterStack.spacing = 7
+        dateCounterStack.alignment = .trailing
+         addSubview(dateCounterStack)
+        dateCounterStack.centerY(inView: profileImageView, rightAnchor: rightAnchor, paddingRight: 15)
+        let nameMessageStack = UIStackView(arrangedSubviews: [
         fullname, recentMessage
         ])
-        vStackView.axis = .vertical
-        vStackView.spacing = 7
-        vStackView.alignment = .leading
-        addSubview(vStackView)
-        vStackView.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, rightAnchor: dateLabel.leftAnchor, paddingLeft: 15, paddingRight: 15)
-        vStackView.anchor(right: dateLabel.rightAnchor, paddingTop: 10)
+        nameMessageStack.axis = .vertical
+        nameMessageStack.spacing = 7
+        nameMessageStack.alignment = .leading
+        addSubview(nameMessageStack)
+        nameMessageStack.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, rightAnchor: dateCounterStack.leftAnchor, paddingLeft: 15, paddingRight: 15)
       
     }
 }
