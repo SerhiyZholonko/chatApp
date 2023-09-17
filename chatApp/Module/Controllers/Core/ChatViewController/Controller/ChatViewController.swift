@@ -66,6 +66,8 @@ class ChatViewController: UICollectionViewController {
                 return stringDateValue ?? ""
             }
             
+            
+        
             self.messages.removeAll()
             
             let sortedKeys = groupMessages.keys.sorted(by: {$0 < $1})
