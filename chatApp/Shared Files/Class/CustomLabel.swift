@@ -12,7 +12,7 @@ class CustomLabel: UILabel {
     //MARK: - Properties
     //MARK: - Init
     
-    init(textLabel: String, textColorLabel: UIColor = .label, fontLabel: UIFont = .systemFont(ofSize: 14), alignmentLabel: NSTextAlignment = .center, numberOfLines: Int? = nil) {
+    init(textLabel: String, textColorLabel: UIColor = .label,  fontLabel: UIFont = .systemFont(ofSize: 14), alignmentLabel: NSTextAlignment = .center, numberOfLines: Int? = nil) {
         super.init(frame: .zero)
         self.textAlignment = alignmentLabel
         self.text = textLabel

@@ -9,7 +9,7 @@ import UIKit
 
 class ChatViewController: UICollectionViewController {
     //MARK: - Properties
-     var messages: [Message] = []
+     var messages: [[Message]] = []
     private var otherUser: User
     private var currentUser: User
     private lazy var customInputView: CustomeInputView = {
@@ -59,13 +59,35 @@ class ChatViewController: UICollectionViewController {
     }
     private func fetchMessages() {
         MessageService.fetchMessages(otherUser: otherUser) { messages in
-            self.messages = messages
-            print("Debag: ",messages)
+//            self.messages = messages
+            let groupMessages = Dictionary(grouping: messages) { element -> String in
+                let dateValue = element.timestamp.dateValue()
+                let stringDateValue = self.stringValue (forDate: dateValue)
+                return stringDateValue ?? ""
+            }
+            
+            self.messages.removeAll()
+            
+            let sortedKeys = groupMessages.keys.sorted(by: {$0 < $1})
+            sortedKeys.forEach { key in
+            let values = groupMessages[key]
+            self.messages.append(values ?? [])
+                                        }
             self.collectionView.reloadData()
+            self.collectionView.scrollToLastItem()
         }
     }
     private func configureCollectionView() {
+        let inset: CGFloat = 40 // Adjust the inset value as needed
+        collectionView.contentInset = UIEdgeInsets(top: inset, left: 0, bottom: 0, right: 0)
+                
         collectionView.register(ChatCell.self, forCellWithReuseIdentifier: ChatCell.identifier)
+        collectionView.register(ChatHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ChatHeader.identifier)
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
+        
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .onDrag
         
     }
     private func addConstraints() {
@@ -88,12 +110,15 @@ class ChatViewController: UICollectionViewController {
 
 
 extension ChatViewController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return messages.count
+    }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages[section].count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatCell.identifier, for: indexPath) as! ChatCell
-        let message = messages[indexPath.item]
+        let message = messages[indexPath.section][indexPath.item]
         cell.viewModel = MessageViewModel(message: message)
         return cell
     }
@@ -109,7 +134,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let cell = ChatCell(frame: frame)
-        let message = messages[indexPath.item]
+        let message = messages[indexPath.section][indexPath.item]
         cell.viewModel = MessageViewModel(message: message)
         cell.layoutIfNeeded()
         
@@ -117,6 +142,20 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
         let estimeteSize = cell.systemLayoutSizeFitting(targetSize)
         
         return CGSize(width: view.frame.width, height: estimeteSize.height)
+    }
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let firstMessage = messages[indexPath.section].first else { return UICollectionReusableView() }
+            let dateValue = firstMessage.timestamp.dateValue()
+            let stringValue = stringValue(forDate: dateValue)
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ChatHeader.identifier, for: indexPath) as! ChatHeader
+            cell.dateValue = stringValue
+            return cell
+        }
+        return UICollectionReusableView()
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 50)
     }
 }
 
