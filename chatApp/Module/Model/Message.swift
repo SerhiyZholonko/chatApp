@@ -19,6 +19,9 @@ struct Message {
     var isFromCurrentUser: Bool
     var chatPartnerID: String {return isFromCurrentUser ? toID : fromID}
     let newMessage: Int
+    let imageUrl: String
+    let videoUrl: String
+    let audioUrl: String
     init(dictionary: [String: Any]) {
         self.text = dictionary["text"] as? String ?? ""
         self.fromID = dictionary["fromID"] as? String ?? ""
@@ -29,6 +32,9 @@ struct Message {
         self.profileImageURL = dictionary["profileImageURL"] as? String ?? ""
         self.isFromCurrentUser = Auth.auth().currentUser?.uid == fromID
         self.newMessage = dictionary["new_message"] as? Int ?? 0
+        self.imageUrl = dictionary["imageURL"] as? String ?? ""
+        self.videoUrl = dictionary["videoURL"] as? String ?? ""
+        self.audioUrl = dictionary["audioURL"] as? String ?? ""
     }
 
 }

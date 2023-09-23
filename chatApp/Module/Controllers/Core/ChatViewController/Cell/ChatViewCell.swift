@@ -8,8 +8,16 @@
 import UIKit
 import SDWebImage
 
+protocol ChatCellDelegate: AnyObject {
+    func cell(wantToPlayVideo cell: ChatCell, videoURL: URL?)
+    func cell(wantToPlayAudio cell: ChatCell, audioURL: URL?, isPlay: Bool)
+    func cell(wantToShowImage cell: ChatCell, imageURL: URL?)
+}
+
 class ChatCell: UICollectionViewCell {
     //MARK: - Properties
+    weak var delegate: ChatCellDelegate?
+    
     static let identifier = "ChatViewCell"
     
     var viewModel: MessageViewModel? {
@@ -42,6 +50,34 @@ class ChatCell: UICollectionViewCell {
         tf.font = .systemFont(ofSize: 16)
         return tf
     }()
+    private lazy var  postImage: CustomImageView = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleImage))
+        let iv = CustomImageView()
+        iv.isHidden = true
+        
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
+        return iv
+    }()
+    private lazy var postVideo: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        button.setTitle(" Play video", for: .normal)
+        button.tintColor = .white
+        button.isHidden = true
+        button.addTarget(self, action: #selector(handlePlayVideo), for: .touchUpInside)
+        return button
+    }()
+    private lazy var postAudio: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        button.setTitle(" Play Audio", for: .normal)
+        button.tintColor = .white
+        button.isHidden = true
+        button.addTarget(self, action: #selector(hendelplayAudio), for: .touchUpInside)
+        return button
+    }()
+    var isVoiceIsPlaying: Bool = true
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,6 +88,11 @@ class ChatCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: - Functions
+    func resetAudioSettings() {
+        postAudio.setTitle(" Play Audio", for: .normal)
+        postAudio.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        isVoiceIsPlaying = true
+    }
     private func configureUI() {
         addSubview (profileImageView)
         profileImageView.anchor (left: leftAnchor, bottom: bottomAnchor, paddingLeft: 10)
@@ -75,7 +116,15 @@ class ChatCell: UICollectionViewCell {
         bubbleContainer.leftAnchor, constant: -12)
         dateRightAnchor.isActive = false
         dateLabel.anchor(bottom: bottomAnchor)
-
+        
+        addSubview(postImage)
+        postImage.anchor(top: bubbleContainer.topAnchor, left: bubbleContainer.leftAnchor, bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 4, paddingRight: 12)
+        addSubview(postVideo)
+        postVideo.anchor(top: bubbleContainer.topAnchor, left: bubbleContainer.leftAnchor, bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 4, paddingRight: 12)
+        
+        addSubview(postAudio)
+        postAudio.anchor(top: bubbleContainer.topAnchor, left: bubbleContainer.leftAnchor, bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 4, paddingRight: 12)
+        
     }
     private func configure() {
         guard let viewModel = viewModel else { return }
@@ -93,6 +142,31 @@ class ChatCell: UICollectionViewCell {
         profileImageView.isHidden = viewModel.shouldshowHideProfileImage
         guard let timestampString = viewModel.timestampString else { return }
         dateLabel.text = timestampString
+        
+        postImage.sd_setImage(with: viewModel.imageURL)
+        textView.isHidden = viewModel.isTextHide
+        postImage.isHidden = viewModel.isImageHide
+        postVideo.isHidden = viewModel.isVideoHide
+        postAudio.isHidden = viewModel.isAudioHide
+        if !viewModel.isImageHide {
+            postImage.setHeight(200 )
+            bubbleContainer.backgroundColor = .clear
+        }
     }
-
+    
+    @objc private func handlePlayVideo() {
+        guard let viewModel = viewModel else {return}
+        delegate?.cell(wantToPlayVideo: self, videoURL: viewModel.videoURL)
+    }
+    @objc private func hendelplayAudio() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(wantToPlayAudio: self, audioURL: viewModel.audioURL, isPlay: isVoiceIsPlaying)
+        isVoiceIsPlaying.toggle()
+        postAudio.setTitle(isVoiceIsPlaying ? " Play Audio" : " Stop Audio", for: .normal)
+        postAudio.setImage(UIImage(systemName: isVoiceIsPlaying ? "play.fill" : "stop.fill"), for: .normal)
+    }
+    @objc private func handleImage() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(wantToShowImage: self, imageURL: viewModel.imageURL)
+    }
 }

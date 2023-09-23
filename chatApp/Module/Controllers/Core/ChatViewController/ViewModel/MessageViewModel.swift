@@ -21,7 +21,15 @@ struct MessageViewModel {
     var rightAnchorActive: Bool {return message.isFromCurrentUser}
     var leftAnchorActive: Bool {return !message.isFromCurrentUser}
     var shouldshowHideProfileImage: Bool {return message.isFromCurrentUser}
-    var profileImageURL: URL? {return URL(string: message .profileImageURL)}
+    var profileImageURL: URL? {return URL(string: message.profileImageURL)}
+    var imageURL: URL? {return URL(string: message.imageUrl)}
+    var videoURL: URL? {return URL(string: message.videoUrl)}
+    var audioURL: URL? {return URL(string: message.audioUrl)}
+    var isImageHide: Bool {return message.imageUrl == ""}
+    var isVideoHide: Bool {return message.videoUrl == ""}
+    var isAudioHide: Bool {return message.audioUrl == ""}
+
+    var isTextHide: Bool { return message.imageUrl != "" }
     var fullName: String {
         return message.fullName
     }

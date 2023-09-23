@@ -54,12 +54,18 @@
 		186182402AADD37C00C69A88 /* ImageTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861823F2AADD37C00C69A88 /* ImageTextButton.swift */; };
 		186182422AADF03800C69A88 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186182412AADF03800C69A88 /* User.swift */; };
 		186182442AADF19A00C69A88 /* UserServiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186182432AADF19A00C69A88 /* UserServiece.swift */; };
+		1872F2772ABEF16A008D07B3 /* SwiftAudioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 1872F2762ABEF16A008D07B3 /* SwiftAudioPlayer */; };
+		1898DC032ABC009C006AC728 /* AKAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898DC022ABC009C006AC728 /* AKAudioRecorder.swift */; };
 		18999A852AB0308F0094E18A /* CustomeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A842AB0308F0094E18A /* CustomeInputView.swift */; };
 		18999A882AB031B20094E18A /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A872AB031B20094E18A /* InputTextView.swift */; };
 		18999A8B2AB084B00094E18A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A8A2AB084B00094E18A /* UserViewModel.swift */; };
+		18B60D302AB885FF005616CA /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60D2F2AB885FF005616CA /* VideoPlayerViewController.swift */; };
+		18B60D332AB88F2D005616CA /* ImageSlideshow in Frameworks */ = {isa = PBXBuildFile; productRef = 18B60D322AB88F2D005616CA /* ImageSlideshow */; };
+		18B60D352AB88F2D005616CA /* ImageSlideshow/SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18B60D342AB88F2D005616CA /* ImageSlideshow/SDWebImage */; };
 		18C95AEF2AB6C9E4004AC21C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C95AEE2AB6C9E4004AC21C /* ViewController.swift */; };
 		18C95AF42AB6EA08004AC21C /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C95AF32AB6EA08004AC21C /* ChatHeader.swift */; };
 		18C95AF62AB70007004AC21C /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C95AF52AB70007004AC21C /* CollectionView.swift */; };
+		18FA38562AB82C58008872CA /* ExtensionChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA38552AB82C58008872CA /* ExtensionChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,12 +108,15 @@
 		1861823F2AADD37C00C69A88 /* ImageTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextButton.swift; sourceTree = "<group>"; };
 		186182412AADF03800C69A88 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		186182432AADF19A00C69A88 /* UserServiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiece.swift; sourceTree = "<group>"; };
+		1898DC022ABC009C006AC728 /* AKAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKAudioRecorder.swift; sourceTree = "<group>"; };
 		18999A842AB0308F0094E18A /* CustomeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeInputView.swift; sourceTree = "<group>"; };
 		18999A872AB031B20094E18A /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		18999A8A2AB084B00094E18A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		18B60D2F2AB885FF005616CA /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		18C95AEE2AB6C9E4004AC21C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18C95AF32AB6EA08004AC21C /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		18C95AF52AB70007004AC21C /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		18FA38552AB82C58008872CA /* ExtensionChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,11 +127,14 @@
 				183243332AAC841B0033F2AA /* FirebaseDatabase in Frameworks */,
 				1832432E2AAC83690033F2AA /* SDWebImage in Frameworks */,
 				183243372AAC841B0033F2AA /* FirebaseMessaging in Frameworks */,
+				18B60D332AB88F2D005616CA /* ImageSlideshow in Frameworks */,
 				1832433C2AAC84840033F2AA /* MBProgressHUD in Frameworks */,
 				182A89C12AACC43000B08DBC /* ProgressHUD in Frameworks */,
 				186182362AADB7F300C69A88 /* GoogleSignInSwift in Frameworks */,
 				183243392AAC841B0033F2AA /* FirebaseStorage in Frameworks */,
 				183243312AAC841B0033F2AA /* FirebaseAuth in Frameworks */,
+				18B60D352AB88F2D005616CA /* ImageSlideshow/SDWebImage in Frameworks */,
+				1872F2772ABEF16A008D07B3 /* SwiftAudioPlayer in Frameworks */,
 				183243352AAC841B0033F2AA /* FirebaseFirestore in Frameworks */,
 				186182342AADB7F300C69A88 /* GoogleSignIn in Frameworks */,
 			);
@@ -142,6 +154,7 @@
 		1823F3E32AAF3B5300602E82 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18B60D2E2AB885B7005616CA /* Controllers */,
 				182EC0492AB308BD00C522FA /* ViewModel */,
 				1823F3E62AAF436D00602E82 /* Controller */,
 				1823F3E72AAF438400602E82 /* Cell */,
@@ -154,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				1823F3E42AAF3B6F00602E82 /* ChatViewController.swift */,
+				18FA38552AB82C58008872CA /* ExtensionChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,6 +359,7 @@
 		1853AA092AAB181E00C7BD01 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1898DC022ABC009C006AC728 /* AKAudioRecorder.swift */,
 				186182412AADF03800C69A88 /* User.swift */,
 				182EC0472AB2F22B00C522FA /* Message.swift */,
 			);
@@ -415,6 +430,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		18B60D2E2AB885B7005616CA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18B60D2F2AB885FF005616CA /* VideoPlayerViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -442,6 +465,9 @@
 				182A89C02AACC43000B08DBC /* ProgressHUD */,
 				186182332AADB7F300C69A88 /* GoogleSignIn */,
 				186182352AADB7F300C69A88 /* GoogleSignInSwift */,
+				18B60D322AB88F2D005616CA /* ImageSlideshow */,
+				18B60D342AB88F2D005616CA /* ImageSlideshow/SDWebImage */,
+				1872F2762ABEF16A008D07B3 /* SwiftAudioPlayer */,
 			);
 			productName = chatApp;
 			productReference = 1853A9EC2AAB16B600C7BD01 /* chatApp.app */;
@@ -477,6 +503,8 @@
 				1832433A2AAC84840033F2AA /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				182A89BF2AACC43000B08DBC /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				186182322AADB7F300C69A88 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				18B60D312AB88F2D005616CA /* XCRemoteSwiftPackageReference "ImageSlideshow" */,
+				1872F2752ABEF16A008D07B3 /* XCRemoteSwiftPackageReference "SwiftAudioPlayer" */,
 			);
 			productRefGroup = 1853A9ED2AAB16B600C7BD01 /* Products */;
 			projectDirPath = "";
@@ -519,6 +547,7 @@
 				18C95AF62AB70007004AC21C /* CollectionView.swift in Sources */,
 				182EC04B2AB308D300C522FA /* MessageViewModel.swift in Sources */,
 				1853AA0D2AAB194800C7BD01 /* LoginViewController.swift in Sources */,
+				18B60D302AB885FF005616CA /* VideoPlayerViewController.swift in Sources */,
 				1853AA0F2AAB1A3000C7BD01 /* RegisterViewController.swift in Sources */,
 				182D820C2AAF1BBA00C35D5C /* NewChatCell.swift in Sources */,
 				18159B262AAC9580007EE035 /* Constants.swift in Sources */,
@@ -535,9 +564,11 @@
 				183243262AAC79090033F2AA /* CustomImageView.swift in Sources */,
 				182EC0462AB2C8BC00C522FA /* MessageService.swift in Sources */,
 				185411D42AAC33E70086A8EF /* RegisterViewModel.swift in Sources */,
+				1898DC032ABC009C006AC728 /* AKAudioRecorder.swift in Sources */,
 				183243242AAC72F80033F2AA /* CustomLabel.swift in Sources */,
 				18159B232AAC91EC007EE035 /* AuthService.swift in Sources */,
 				182EC0482AB2F22B00C522FA /* Message.swift in Sources */,
+				18FA38562AB82C58008872CA /* ExtensionChatViewController.swift in Sources */,
 				183243202AAC4ECE0033F2AA /* AuthViewModelProtocol.swift in Sources */,
 				182A89BE2AACC37200B08DBC /* UIAnimatable.swift in Sources */,
 				182D82002AAED18400C35D5C /* NewChatViewController.swift in Sources */,
@@ -686,6 +717,9 @@
 				DEVELOPMENT_TEAM = 4BBUSC332Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = chatApp/Support/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera to get  media";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your mic for video";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your photo ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -713,6 +747,9 @@
 				DEVELOPMENT_TEAM = 4BBUSC332Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = chatApp/Support/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera to get  media";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your mic for video";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your photo ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -794,6 +831,22 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		1872F2752ABEF16A008D07B3 /* XCRemoteSwiftPackageReference "SwiftAudioPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tanhakabir/SwiftAudioPlayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		18B60D312AB88F2D005616CA /* XCRemoteSwiftPackageReference "ImageSlideshow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zvonicek/ImageSlideshow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -846,6 +899,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 186182322AADB7F300C69A88 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		1872F2762ABEF16A008D07B3 /* SwiftAudioPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1872F2752ABEF16A008D07B3 /* XCRemoteSwiftPackageReference "SwiftAudioPlayer" */;
+			productName = SwiftAudioPlayer;
+		};
+		18B60D322AB88F2D005616CA /* ImageSlideshow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B60D312AB88F2D005616CA /* XCRemoteSwiftPackageReference "ImageSlideshow" */;
+			productName = ImageSlideshow;
+		};
+		18B60D342AB88F2D005616CA /* ImageSlideshow/SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B60D312AB88F2D005616CA /* XCRemoteSwiftPackageReference "ImageSlideshow" */;
+			productName = ImageSlideshow/SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

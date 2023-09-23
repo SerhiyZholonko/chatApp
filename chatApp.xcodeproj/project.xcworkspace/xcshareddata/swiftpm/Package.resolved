@@ -10,6 +10,24 @@
       }
     },
     {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "b2fa556e4e48cbf06cf8c63def138c98f4b811fa",
+        "version" : "5.8.0"
+      }
+    },
+    {
+      "identity" : "alamofireimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/AlamofireImage.git",
+      "state" : {
+        "revision" : "1eaf3b6c6882bed10f6e7b119665599dd2329aa1",
+        "version" : "4.3.0"
+      }
+    },
+    {
       "identity" : "appauth-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
@@ -91,12 +109,30 @@
       }
     },
     {
+      "identity" : "imageslideshow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zvonicek/ImageSlideshow",
+      "state" : {
+        "revision" : "a54e24d47944a1ca84c2a7bf03cb435425a9929d",
+        "version" : "1.9.2"
+      }
+    },
+    {
       "identity" : "interop-ios-for-google-sdks",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/interop-ios-for-google-sdks.git",
       "state" : {
         "revision" : "2d12673670417654f08f5f90fdd62926dc3a2648",
         "version" : "100.0.0"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "1a0c2df04b31ed7aa318354f3583faea24f006fc",
+        "version" : "5.15.8"
       }
     },
     {
@@ -160,6 +196,15 @@
       "state" : {
         "revision" : "cf62cdaea48b77f1a631e5cb3aeda6047c2cba1d",
         "version" : "1.23.0"
+      }
+    },
+    {
+      "identity" : "swiftaudioplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tanhakabir/SwiftAudioPlayer",
+      "state" : {
+        "revision" : "2fdfc62ce9f5d8b818ee1b2a9ac061fce4f64af9",
+        "version" : "7.6.0"
       }
     }
   ],
