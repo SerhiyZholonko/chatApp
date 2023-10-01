@@ -12,6 +12,7 @@ protocol ChatCellDelegate: AnyObject {
     func cell(wantToPlayVideo cell: ChatCell, videoURL: URL?)
     func cell(wantToPlayAudio cell: ChatCell, audioURL: URL?, isPlay: Bool)
     func cell(wantToShowImage cell: ChatCell, imageURL: URL?)
+    func cell(wantToShowLocation cell: ChatCell, locationURL: URL?)
 }
 
 class ChatCell: UICollectionViewCell {
@@ -77,6 +78,15 @@ class ChatCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(hendelplayAudio), for: .touchUpInside)
         return button
     }()
+    private lazy var postLocation: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "location.circle"), for: .normal)
+        button.setTitle(" Google Maps", for: .normal)
+        button.tintColor = .white
+        button.isHidden = true
+        button.addTarget(self, action: #selector(handleLocationButton), for: .touchUpInside)
+        return button
+    }()
     var isVoiceIsPlaying: Bool = true
     //MARK: - Init
     override init(frame: CGRect) {
@@ -124,6 +134,8 @@ class ChatCell: UICollectionViewCell {
         
         addSubview(postAudio)
         postAudio.anchor(top: bubbleContainer.topAnchor, left: bubbleContainer.leftAnchor, bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 4, paddingRight: 12)
+        addSubview(postLocation)
+        postLocation.anchor(top: bubbleContainer.topAnchor, left: bubbleContainer.leftAnchor, bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 4, paddingRight: 12)
         
     }
     private func configure() {
@@ -148,6 +160,7 @@ class ChatCell: UICollectionViewCell {
         postImage.isHidden = viewModel.isImageHide
         postVideo.isHidden = viewModel.isVideoHide
         postAudio.isHidden = viewModel.isAudioHide
+        postLocation.isHidden = viewModel.isLocationHide
         if !viewModel.isImageHide {
             postImage.setHeight(200 )
             bubbleContainer.backgroundColor = .clear
@@ -164,6 +177,10 @@ class ChatCell: UICollectionViewCell {
         isVoiceIsPlaying.toggle()
         postAudio.setTitle(isVoiceIsPlaying ? " Play Audio" : " Stop Audio", for: .normal)
         postAudio.setImage(UIImage(systemName: isVoiceIsPlaying ? "play.fill" : "stop.fill"), for: .normal)
+    }
+    @objc private func handleLocationButton() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(wantToShowLocation: self, locationURL: viewModel.locationURL)
     }
     @objc private func handleImage() {
         guard let viewModel = viewModel else { return }

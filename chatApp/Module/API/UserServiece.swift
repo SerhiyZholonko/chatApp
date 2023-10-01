@@ -40,4 +40,8 @@ struct UserServiece{
             complition(users)
         }
     }
+    static func setUserData(data: [String: Any], completion: @escaping (Error?) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Constants.CollectionUsers.document(uid).updateData(data, completion: completion)
+    }
 }

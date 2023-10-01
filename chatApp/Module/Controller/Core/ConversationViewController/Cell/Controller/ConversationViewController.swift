@@ -27,6 +27,17 @@ class ConversationViewController: UIViewController, UIAnimatable {
         label.isHidden = true
         return label
     }()
+    private lazy var profileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "info"), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .systemGreen
+        button.setDimensions(height: 40, width: 40)
+        button.layer.cornerRadius = 20
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(handleProfilebutton), for: .touchUpInside)
+        return button
+    }()
     private var conversations: [Message] = [] {
         didSet {
             getTotalAmount(conversations: conversations)
@@ -59,6 +70,7 @@ class ConversationViewController: UIViewController, UIAnimatable {
         getUser()
       fetchConversations()
         configureTableView()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUserProfile), name: .userProfile, object: nil)
     }
    
  
@@ -76,7 +88,7 @@ class ConversationViewController: UIViewController, UIAnimatable {
                 navigationBar.setTitleFont(boldFont, color: UIColor.black)
             }
         }
-        navigationItem.title = "CHAT APP"
+        navigationItem.title = user.username.uppercased()
         
     }
     private func configureTableView() {
@@ -92,6 +104,8 @@ class ConversationViewController: UIViewController, UIAnimatable {
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingLeft: 15, paddingRight: 15)
         view.addSubview(unReadMsgLabel)
         unReadMsgLabel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 20, paddingBottom: 20)
+        view.addSubview(profileButton)
+        profileButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 30, paddingRight: 20)
     }
     private func getUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
@@ -136,6 +150,17 @@ class ConversationViewController: UIViewController, UIAnimatable {
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
+    }
+    @objc private func handleProfilebutton() {
+        let controller = ProfileViewController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    @objc private func handleUserProfile() {
+        print("Debug: observe conversation")
+        UserServiece.fetchUser(uid: user.uid) { [self] currentUser in
+            user = currentUser
+            title = user.username
+        }
     }
 }
 

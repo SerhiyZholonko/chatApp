@@ -10,6 +10,7 @@
 		18159B232AAC91EC007EE035 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18159B222AAC91EC007EE035 /* AuthService.swift */; };
 		18159B262AAC9580007EE035 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18159B252AAC9580007EE035 /* Constants.swift */; };
 		18159B282AAC9B68007EE035 /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18159B272AAC9B68007EE035 /* FileUploader.swift */; };
+		18175CBE2AC8184700B6D444 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18175CBD2AC8184700B6D444 /* EditProfileViewController.swift */; };
 		1823F3E52AAF3B6F00602E82 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1823F3E42AAF3B6F00602E82 /* ChatViewController.swift */; };
 		1823F3E92AAF43AB00602E82 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1823F3E82AAF43AB00602E82 /* ChatViewCell.swift */; };
 		182A89BC2AACBABE00B08DBC /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A89BB2AACBABE00B08DBC /* ConversationViewController.swift */; };
@@ -46,6 +47,7 @@
 		1853AA1A2AAB55D700C7BD01 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853AA192AAB55D700C7BD01 /* LoginViewModel.swift */; };
 		185411D22AAC27760086A8EF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185411D12AAC27760086A8EF /* CustomTextField.swift */; };
 		185411D42AAC33E70086A8EF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185411D32AAC33E70086A8EF /* RegisterViewModel.swift */; };
+		1858352D2AC67EE2009AEC3E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858352C2AC67EE2009AEC3E /* ProfileViewModel.swift */; };
 		186182342AADB7F300C69A88 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 186182332AADB7F300C69A88 /* GoogleSignIn */; };
 		186182362AADB7F300C69A88 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 186182352AADB7F300C69A88 /* GoogleSignInSwift */; };
 		1861823A2AADC06100C69A88 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 186182392AADC06100C69A88 /* credentials.plist */; };
@@ -55,16 +57,22 @@
 		186182422AADF03800C69A88 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186182412AADF03800C69A88 /* User.swift */; };
 		186182442AADF19A00C69A88 /* UserServiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186182432AADF19A00C69A88 /* UserServiece.swift */; };
 		1872F2772ABEF16A008D07B3 /* SwiftAudioPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 1872F2762ABEF16A008D07B3 /* SwiftAudioPlayer */; };
+		18746C792AC142E700C0DA9A /* ChatMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18746C782AC142E700C0DA9A /* ChatMapViewController.swift */; };
+		188C5E732AC0181D00870767 /* FLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C5E722AC0181D00870767 /* FLocationManager.swift */; };
 		1898DC032ABC009C006AC728 /* AKAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898DC022ABC009C006AC728 /* AKAudioRecorder.swift */; };
 		18999A852AB0308F0094E18A /* CustomeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A842AB0308F0094E18A /* CustomeInputView.swift */; };
 		18999A882AB031B20094E18A /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A872AB031B20094E18A /* InputTextView.swift */; };
 		18999A8B2AB084B00094E18A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18999A8A2AB084B00094E18A /* UserViewModel.swift */; };
+		189DDC0C2AC536C700A57D59 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DDC0B2AC536C700A57D59 /* ProfileViewCell.swift */; };
 		18B60D302AB885FF005616CA /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60D2F2AB885FF005616CA /* VideoPlayerViewController.swift */; };
 		18B60D332AB88F2D005616CA /* ImageSlideshow in Frameworks */ = {isa = PBXBuildFile; productRef = 18B60D322AB88F2D005616CA /* ImageSlideshow */; };
 		18B60D352AB88F2D005616CA /* ImageSlideshow/SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18B60D342AB88F2D005616CA /* ImageSlideshow/SDWebImage */; };
+		18BF651B2AC3DE660081BF6D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF651A2AC3DE660081BF6D /* ProfileViewController.swift */; };
 		18C95AEF2AB6C9E4004AC21C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C95AEE2AB6C9E4004AC21C /* ViewController.swift */; };
 		18C95AF42AB6EA08004AC21C /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C95AF32AB6EA08004AC21C /* ChatHeader.swift */; };
 		18C95AF62AB70007004AC21C /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C95AF52AB70007004AC21C /* CollectionView.swift */; };
+		18E216A72AC28F9400B45AA6 /* GoogleMapsUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 18E216A62AC28F9400B45AA6 /* GoogleMapsUtils */; };
+		18E42F2D2AC9262F009971BB /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E42F2C2AC9262F009971BB /* NotificationCenter.swift */; };
 		18FA38562AB82C58008872CA /* ExtensionChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA38552AB82C58008872CA /* ExtensionChatViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +80,7 @@
 		18159B222AAC91EC007EE035 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		18159B252AAC9580007EE035 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18159B272AAC9B68007EE035 /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
+		18175CBD2AC8184700B6D444 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		1823F3E42AAF3B6F00602E82 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		1823F3E82AAF43AB00602E82 /* ChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewCell.swift; sourceTree = "<group>"; };
 		182A89BB2AACBABE00B08DBC /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -102,20 +111,27 @@
 		1853AA192AAB55D700C7BD01 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		185411D12AAC27760086A8EF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		185411D32AAC33E70086A8EF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		18547BE82AC01071007C98F7 /* Time Square.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Time Square.gpx"; sourceTree = "<group>"; };
+		1858352C2AC67EE2009AEC3E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		186182392AADC06100C69A88 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		1861823B2AADC1EA00C69A88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1861823D2AADCD5E00C69A88 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1861823F2AADD37C00C69A88 /* ImageTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextButton.swift; sourceTree = "<group>"; };
 		186182412AADF03800C69A88 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		186182432AADF19A00C69A88 /* UserServiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiece.swift; sourceTree = "<group>"; };
+		18746C782AC142E700C0DA9A /* ChatMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMapViewController.swift; sourceTree = "<group>"; };
+		188C5E722AC0181D00870767 /* FLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLocationManager.swift; sourceTree = "<group>"; };
 		1898DC022ABC009C006AC728 /* AKAudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKAudioRecorder.swift; sourceTree = "<group>"; };
 		18999A842AB0308F0094E18A /* CustomeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeInputView.swift; sourceTree = "<group>"; };
 		18999A872AB031B20094E18A /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		18999A8A2AB084B00094E18A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		189DDC0B2AC536C700A57D59 /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		18B60D2F2AB885FF005616CA /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		18BF651A2AC3DE660081BF6D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18C95AEE2AB6C9E4004AC21C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18C95AF32AB6EA08004AC21C /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		18C95AF52AB70007004AC21C /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		18E42F2C2AC9262F009971BB /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		18FA38552AB82C58008872CA /* ExtensionChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +148,7 @@
 				182A89C12AACC43000B08DBC /* ProgressHUD in Frameworks */,
 				186182362AADB7F300C69A88 /* GoogleSignInSwift in Frameworks */,
 				183243392AAC841B0033F2AA /* FirebaseStorage in Frameworks */,
+				18E216A72AC28F9400B45AA6 /* GoogleMapsUtils in Frameworks */,
 				183243312AAC841B0033F2AA /* FirebaseAuth in Frameworks */,
 				18B60D352AB88F2D005616CA /* ImageSlideshow/SDWebImage in Frameworks */,
 				1872F2772ABEF16A008D07B3 /* SwiftAudioPlayer in Frameworks */,
@@ -195,6 +212,7 @@
 				1823F3E32AAF3B5300602E82 /* ChatViewController */,
 				182D82012AAEF48F00C35D5C /* ConversationViewController */,
 				182D82082AAEFEF800C35D5C /* NewChatViewController */,
+				18746C782AC142E700C0DA9A /* ChatMapViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -297,6 +315,7 @@
 		1853AA032AAB171500C7BD01 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				18547BE72AC00F58007C98F7 /* Fake Location */,
 				1853AA152AAB1D2200C7BD01 /* Assets.xcassets */,
 				1853A9EF2AAB16B600C7BD01 /* AppDelegate.swift */,
 				1861823B2AADC1EA00C69A88 /* GoogleService-Info.plist */,
@@ -316,7 +335,7 @@
 				1853AA082AAB180900C7BD01 /* Views */,
 				1832431E2AAC4EB10033F2AA /* Protocols */,
 				1853AA072AAB17FC00C7BD01 /* ViewModel */,
-				1853AA062AAB17EF00C7BD01 /* Controllers */,
+				1853AA062AAB17EF00C7BD01 /* Controller */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -331,13 +350,14 @@
 			path = "Shared Files";
 			sourceTree = "<group>";
 		};
-		1853AA062AAB17EF00C7BD01 /* Controllers */ = {
+		1853AA062AAB17EF00C7BD01 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18BF65192AC3DE1A0081BF6D /* Profile */,
 				182A89B92AACBA9E00B08DBC /* Auth */,
 				182A89BA2AACBAA700B08DBC /* Core */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		1853AA072AAB17FC00C7BD01 /* ViewModel */ = {
@@ -345,6 +365,7 @@
 			children = (
 				1853AA192AAB55D700C7BD01 /* LoginViewModel.swift */,
 				185411D32AAC33E70086A8EF /* RegisterViewModel.swift */,
+				1858352C2AC67EE2009AEC3E /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -388,6 +409,7 @@
 				182D81FD2AAEC2A800C35D5C /* NavigationBar.swift */,
 				18C95AEE2AB6C9E4004AC21C /* ViewController.swift */,
 				18C95AF52AB70007004AC21C /* CollectionView.swift */,
+				18E42F2C2AC9262F009971BB /* NotificationCenter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +417,7 @@
 		185411CF2AAC273C0086A8EF /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				188C5E722AC0181D00870767 /* FLocationManager.swift */,
 				185411D12AAC27760086A8EF /* CustomTextField.swift */,
 				1832431C2AAC4B400033F2AA /* AuthButton.swift */,
 				183243252AAC79090033F2AA /* CustomImageView.swift */,
@@ -403,6 +426,14 @@
 				18999A872AB031B20094E18A /* InputTextView.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		18547BE72AC00F58007C98F7 /* Fake Location */ = {
+			isa = PBXGroup;
+			children = (
+				18547BE82AC01071007C98F7 /* Time Square.gpx */,
+			);
+			path = "Fake Location";
 			sourceTree = "<group>";
 		};
 		18999A832AB0307F0094E18A /* View */ = {
@@ -430,12 +461,38 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		189DDC092AC536A000A57D59 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18BF651A2AC3DE660081BF6D /* ProfileViewController.swift */,
+				18175CBD2AC8184700B6D444 /* EditProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		189DDC0A2AC536B100A57D59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				189DDC0B2AC536C700A57D59 /* ProfileViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		18B60D2E2AB885B7005616CA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				18B60D2F2AB885FF005616CA /* VideoPlayerViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18BF65192AC3DE1A0081BF6D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				189DDC0A2AC536B100A57D59 /* View */,
+				189DDC092AC536A000A57D59 /* Controller */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,6 +525,7 @@
 				18B60D322AB88F2D005616CA /* ImageSlideshow */,
 				18B60D342AB88F2D005616CA /* ImageSlideshow/SDWebImage */,
 				1872F2762ABEF16A008D07B3 /* SwiftAudioPlayer */,
+				18E216A62AC28F9400B45AA6 /* GoogleMapsUtils */,
 			);
 			productName = chatApp;
 			productReference = 1853A9EC2AAB16B600C7BD01 /* chatApp.app */;
@@ -505,6 +563,7 @@
 				186182322AADB7F300C69A88 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				18B60D312AB88F2D005616CA /* XCRemoteSwiftPackageReference "ImageSlideshow" */,
 				1872F2752ABEF16A008D07B3 /* XCRemoteSwiftPackageReference "SwiftAudioPlayer" */,
+				18E216A52AC28F9400B45AA6 /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */,
 			);
 			productRefGroup = 1853A9ED2AAB16B600C7BD01 /* Products */;
 			projectDirPath = "";
@@ -537,12 +596,14 @@
 				182D81FE2AAEC2A800C35D5C /* NavigationBar.swift in Sources */,
 				1853AA182AAB500400C7BD01 /* Buttons.swift in Sources */,
 				183243222AAC64F70033F2AA /* UIColor.swift in Sources */,
+				18746C792AC142E700C0DA9A /* ChatMapViewController.swift in Sources */,
 				1861823E2AADCD5E00C69A88 /* String.swift in Sources */,
 				186182442AADF19A00C69A88 /* UserServiece.swift in Sources */,
 				18999A882AB031B20094E18A /* InputTextView.swift in Sources */,
 				182A89BC2AACBABE00B08DBC /* ConversationViewController.swift in Sources */,
 				1823F3E92AAF43AB00602E82 /* ChatViewCell.swift in Sources */,
 				1832431D2AAC4B400033F2AA /* AuthButton.swift in Sources */,
+				188C5E732AC0181D00870767 /* FLocationManager.swift in Sources */,
 				18999A852AB0308F0094E18A /* CustomeInputView.swift in Sources */,
 				18C95AF62AB70007004AC21C /* CollectionView.swift in Sources */,
 				182EC04B2AB308D300C522FA /* MessageViewModel.swift in Sources */,
@@ -554,6 +615,8 @@
 				1853AA122AAB1CD800C7BD01 /* Views.swift in Sources */,
 				186182422AADF03800C69A88 /* User.swift in Sources */,
 				18C95AF42AB6EA08004AC21C /* ChatHeader.swift in Sources */,
+				1858352D2AC67EE2009AEC3E /* ProfileViewModel.swift in Sources */,
+				18E42F2D2AC9262F009971BB /* NotificationCenter.swift in Sources */,
 				18159B282AAC9B68007EE035 /* FileUploader.swift in Sources */,
 				18C95AEF2AB6C9E4004AC21C /* ViewController.swift in Sources */,
 				185411D22AAC27760086A8EF /* CustomTextField.swift in Sources */,
@@ -568,12 +631,15 @@
 				183243242AAC72F80033F2AA /* CustomLabel.swift in Sources */,
 				18159B232AAC91EC007EE035 /* AuthService.swift in Sources */,
 				182EC0482AB2F22B00C522FA /* Message.swift in Sources */,
+				18175CBE2AC8184700B6D444 /* EditProfileViewController.swift in Sources */,
 				18FA38562AB82C58008872CA /* ExtensionChatViewController.swift in Sources */,
 				183243202AAC4ECE0033F2AA /* AuthViewModelProtocol.swift in Sources */,
 				182A89BE2AACC37200B08DBC /* UIAnimatable.swift in Sources */,
 				182D82002AAED18400C35D5C /* NewChatViewController.swift in Sources */,
+				189DDC0C2AC536C700A57D59 /* ProfileViewCell.swift in Sources */,
 				186182402AADD37C00C69A88 /* ImageTextButton.swift in Sources */,
 				1823F3E52AAF3B6F00602E82 /* ChatViewController.swift in Sources */,
+				18BF651B2AC3DE660081BF6D /* ProfileViewController.swift in Sources */,
 				18999A8B2AB084B00094E18A /* UserViewModel.swift in Sources */,
 				1853A9F22AAB16B600C7BD01 /* SceneDelegate.swift in Sources */,
 			);
@@ -650,6 +716,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
@@ -703,6 +770,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -718,6 +786,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = chatApp/Support/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera to get  media";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location for for this";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for for this";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for for this";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your mic for video";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your photo ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -748,6 +819,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = chatApp/Support/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera to get  media";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location for for this";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for for this";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for for this";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your mic for video";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your photo ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -847,6 +921,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		18E216A52AC28F9400B45AA6 /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/google-maps-ios-utils.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -914,6 +996,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18B60D312AB88F2D005616CA /* XCRemoteSwiftPackageReference "ImageSlideshow" */;
 			productName = ImageSlideshow/SDWebImage;
+		};
+		18E216A62AC28F9400B45AA6 /* GoogleMapsUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18E216A52AC28F9400B45AA6 /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */;
+			productName = GoogleMapsUtils;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

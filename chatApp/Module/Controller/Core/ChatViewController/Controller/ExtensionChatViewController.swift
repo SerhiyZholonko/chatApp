@@ -80,3 +80,31 @@ extension ChatViewController {
 
     }
 }
+
+
+
+ //MARK: -
+extension ChatViewController {
+    func  handleCurrentLocation() {
+        FLocationManager.shared.start { info in
+            guard let lat = info.latitude, let lng = info.longitude else { return }
+            uploadLocation(lat: "\(lat)", lng: "\(lng)")
+    }
+    func handleGoogleMap() {
+        
+    }
+    func uploadLocation (lat: String, lng: String){
+        let locationURL = "https://www.google.com/maps/dir/?api=1&destination=\(lat),\(lng)"
+        showLoadingAnimation()
+        MessageService.fetchSingleResentMessage(otherUser: otherUser) { [self] unReadCount in
+            MessageService.uploadMessage(locationUrl: locationURL, currentUser: currentUser, unReadCounter: unReadCount + 1, otherUser: otherUser) { [self] error in
+                hideLoadingAnimation()
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                print(locationURL)
+            }
+        }
+        }
+    }
+}

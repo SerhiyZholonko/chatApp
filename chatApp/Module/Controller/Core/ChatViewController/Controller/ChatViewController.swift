@@ -30,8 +30,20 @@ class ChatViewController: UICollectionViewController {
             self?.handleGallery()
         }))
         alert.addAction (UIAlertAction(title: "Location", style: .default, handler: {[weak self] _ in
-            print("Location")
+            guard let strongSelf = self else { return }
+            strongSelf.present(strongSelf.locationAlert, animated: true)
         }))
+        return alert
+    }()
+    private lazy var locationAlert: UIAlertController = {
+        let alert = UIAlertController(title: "Share location", message: "Select the button you want to share location from", preferredStyle: .actionSheet)
+        alert.addAction (UIAlertAction(title: "Current Location", style: .default, handler: {[weak self] _ in
+            self?.handleCurrentLocation()
+        }))
+        alert.addAction (UIAlertAction(title: "Google Map", style: .default, handler: {[weak self] _ in
+//            self?.handleGoogleMap()
+        }))
+        alert.addAction (UIAlertAction(title: "Cansel", style: .cancel))
         return alert
     }()
     lazy var imagePiker: UIImagePickerController = {
@@ -212,6 +224,7 @@ extension ChatViewController: CustomeInputViewDelegate {
  //MARK: - ChatCellDelegate
 
 extension ChatViewController: ChatCellDelegate {
+  
     func cell(wantToShowImage cell: ChatCell, imageURL: URL?) {
         let imageSlideShow = ImageSlideshow()
         guard let imageURL = imageURL else { return }
@@ -246,6 +259,15 @@ extension ChatViewController: ChatCellDelegate {
             SAPlayer.shared.stopStreamingRemoteAudio()
         }
       
+    }
+    func cell(wantToShowLocation cell: ChatCell, locationURL: URL?) {
+        guard let googleURLApp = URL(string: "comgooglemaps://") else { return }
+        guard let locationURL = locationURL else { return }
+        if UIApplication.shared.canOpenURL(googleURLApp) {
+            UIApplication.shared.open(locationURL)
+        } else {
+            UIApplication.shared.open(locationURL, options: [:])
+        }
     }
    
 }

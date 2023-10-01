@@ -22,7 +22,7 @@ struct MessageService {
             completion(messages)
         }
     }
-    static func uploadMessage (message: String = "", imageUrl: String = "", videoUrl: String = "", audioUrl: String = "", currentUser: User, unReadCounter: Int, otherUser: User, completion: ((Error?) -> Void)?) {
+    static func uploadMessage(message: String = "", imageUrl: String = "", videoUrl: String = "", audioUrl: String = "", locationUrl: String = "", currentUser: User, unReadCounter: Int, otherUser: User, completion: ((Error?) -> Void)?) {
         let dataFrom: [String: Any] = ["text": message,
                                        "fromID": currentUser.uid,
                                        "toID": otherUser.uid,
@@ -32,7 +32,8 @@ struct MessageService {
                                        "new_message": 0,
                                        "imageURL": imageUrl,
                                        "videoURL": videoUrl,
-                                       "audioURL": audioUrl]
+                                       "audioURL": audioUrl,
+                                       "locationURL": locationUrl]
       
         
         
@@ -47,7 +48,8 @@ struct MessageService {
             "new_message": unReadCounter,
             "imageURL": imageUrl,
             "videoURL": videoUrl,
-            "audioURL": audioUrl]
+            "audioURL": audioUrl,
+            "locationURL": locationUrl]
        
 
         

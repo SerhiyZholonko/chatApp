@@ -25,9 +25,15 @@ struct MessageViewModel {
     var imageURL: URL? {return URL(string: message.imageUrl)}
     var videoURL: URL? {return URL(string: message.videoUrl)}
     var audioURL: URL? {return URL(string: message.audioUrl)}
+    var locationURL: URL? {
+        let encodedURL = message.locationUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return URL(string: encodedURL ?? "")
+        
+    }
     var isImageHide: Bool {return message.imageUrl == ""}
     var isVideoHide: Bool {return message.videoUrl == ""}
     var isAudioHide: Bool {return message.audioUrl == ""}
+    var isLocationHide: Bool {return message.locationUrl == ""}
 
     var isTextHide: Bool { return message.imageUrl != "" }
     var fullName: String {
