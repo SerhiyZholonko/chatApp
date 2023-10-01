@@ -12,7 +12,11 @@ import SwiftAudioPlayer
 
 class ChatViewController: UICollectionViewController {
     //MARK: - Properties
-    var messages: [[Message]] = []
+    var messages: [[Message]] = [] {
+        didSet {
+            emptyView.isHidden = !messages.isEmpty
+        }
+    }
     var otherUser: User
     var currentUser: User
     private lazy var customInputView: CustomeInputView = {
@@ -21,6 +25,14 @@ class ChatViewController: UICollectionViewController {
         iv.delegate = self
         return iv
     }()
+    private let emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.layer.cornerRadius = 12
+        view.isHidden = true
+        return view
+    }()
+    private let emptyLabel = CustomLabel(textLabel: "There are no conversation is empty", textColorLabel: .systemYellow, numberOfLines: 2)
     private lazy var attachAlert: UIAlertController = {
         let alert = UIAlertController(title: "Attach File", message: "Select the button you want to attach", preferredStyle: .actionSheet)
         alert.addAction (UIAlertAction(title: "Camera", style: .default, handler: {[weak self] _ in
@@ -88,6 +100,12 @@ class ChatViewController: UICollectionViewController {
         navigationItem.title = otherUser.fullname.capitalized
         addConstraints()
         configureTapGesture()
+        
+        view.addSubview(emptyView)
+        emptyView.anchor( left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 25, paddingBottom: 60, paddingRight: 25, height: 60)
+        emptyView.addSubview(emptyLabel)
+        emptyLabel.center(inView: emptyView)
+        emptyLabel.anchor(left: emptyView.leftAnchor, right: emptyView.rightAnchor, paddingLeft: 5, paddingRight: 5)
     }
     private func fetchMessages() {
         MessageService.fetchMessages(otherUser: otherUser) { messages in
@@ -121,6 +139,7 @@ class ChatViewController: UICollectionViewController {
         collectionView.keyboardDismissMode = .onDrag
         
     }
+   
     private func addConstraints() {
         view.addSubview(customInputView)
         customInputView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)

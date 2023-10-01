@@ -14,6 +14,7 @@ class ConversationViewController: UIViewController, UIAnimatable {
     //MARK: - Properties
     private var user: User
     private let tableView = UITableView()
+    private var conversationFielter: [Message] = []
     private let unReadMsgLabel: UILabel = {
         let label = UILabel ()
         label.text = "8"
@@ -38,9 +39,18 @@ class ConversationViewController: UIViewController, UIAnimatable {
         button.addTarget(self, action: #selector(handleProfilebutton), for: .touchUpInside)
         return button
     }()
+    private let emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.layer.cornerRadius = 12
+        view.isHidden = true
+        return view
+    }()
+    private let emptyLabel = CustomLabel(textLabel: "There are no conversation, Click add to start chatting now", textColorLabel: .systemYellow, numberOfLines: 2)
     private var conversations: [Message] = [] {
         didSet {
             getTotalAmount(conversations: conversations)
+            emptyView.isHidden = !conversations.isEmpty
             tableView.reloadData()
         }
     }
@@ -54,7 +64,13 @@ class ConversationViewController: UIViewController, UIAnimatable {
             }
         }
     }
+    
+    private var isSearchMode: Bool  {
+        guard let text = searchController.searchBar.text else { return false }
+        return searchController.isActive || !text.isEmpty
+    }
     private var conversationDictionary = [String: Message]()
+    private let searchController = UISearchController(searchResultsController: nil )
     //MARK: - Livecycle
     init(user: User) {
         self.user = user
@@ -67,6 +83,7 @@ class ConversationViewController: UIViewController, UIAnimatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
+        configureSearchController()
         getUser()
       fetchConversations()
         configureTableView()
@@ -99,6 +116,15 @@ class ConversationViewController: UIViewController, UIAnimatable {
         tableView.tableFooterView = UIView()
         addConstraints()
     }
+    private func configureSearchController() {
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = false
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search.."
+        navigationItem.searchController = searchController
+    }
     private func addConstraints() {
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingLeft: 15, paddingRight: 15)
@@ -106,6 +132,11 @@ class ConversationViewController: UIViewController, UIAnimatable {
         unReadMsgLabel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 20, paddingBottom: 20)
         view.addSubview(profileButton)
         profileButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 30, paddingRight: 20)
+        view.addSubview(emptyView)
+        emptyView.anchor( left: view.leftAnchor, bottom: profileButton.topAnchor, right: view.rightAnchor, paddingLeft: 25, paddingBottom: 25, paddingRight: 25, height: 60)
+        emptyView.addSubview(emptyLabel)
+        emptyLabel.center(inView: emptyView)
+        emptyLabel.anchor(left: emptyView.leftAnchor, right: emptyView.rightAnchor, paddingLeft: 5, paddingRight: 5)
     }
     private func getUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
@@ -170,28 +201,55 @@ class ConversationViewController: UIViewController, UIAnimatable {
 
 extension ConversationViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversations.count
+        return  isSearchMode ? conversationFielter.count : conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.identifier, for: indexPath) as! ConversationCell
-        let conversation = conversations[indexPath.item]
+        let conversation = isSearchMode ? conversationFielter[indexPath.item] : conversations[indexPath.item]
         cell.viewModel = MessageViewModel(message: conversation)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showLoadingAnimation()
-        let coversation = conversations[indexPath.item]
+        let coversation =  isSearchMode ? conversationFielter[indexPath.item] : conversations[indexPath.item]
         UserServiece.fetchUser(uid: coversation.chatPartnerID) { [self] otherUser in
             self.hideLoadingAnimation()
             self.openChatVithUser(withCurrentUser: user, withOtherUser: otherUser)
         }
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        showLoadingAnimation()
+        let coversation =  isSearchMode ? conversationFielter[indexPath.item] : conversations[indexPath.item]
+        UserServiece.fetchUser(uid: coversation.toID) { [self] user in
+            MessageService.deleteConversation(withUser: user) {[self] error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                hideLoadingAnimation()
+                if editingStyle == .delete {
+                    if isSearchMode {
+                        conversationFielter.remove(at: indexPath.row)
+                    } else {
+                        conversations.remove(at: indexPath.row)
+                    }
+                    
+                    tableView.reloadRows(at: [indexPath], with: .fade)
+
+                }
+            }
+        }
+     
+    
+    }
 }
 
 
-//MARK: -
+//MARK: - NewChatvitwControllerDelegate
 extension ConversationViewController: NewChatvitwControllerDelegate {
     func controller(_ vc: NewChatViewController, wantChatwithUser otherUser: User) {
         vc.dismiss(animated: true)
@@ -199,4 +257,23 @@ extension ConversationViewController: NewChatvitwControllerDelegate {
     }
     
     
+}
+
+
+ //MARK: - SearchViewController
+extension ConversationViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {        
+        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
+        conversationFielter = conversations.filter{$0.username.contains(searchText) || $0.fullName.contains(searchText)}
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+    }
 }

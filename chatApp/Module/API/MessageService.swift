@@ -90,4 +90,93 @@ struct MessageService {
         ]
         Constants.CollectionMessage.document(uid).collection("recent-message").document(otherUser.uid).updateData(data)
     }
+    
+    static func deleteMessage(messageID: String, fromUser currentUser: User, toUser otherUser: User, completion: ((Error?) -> Void)?) {
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
+            // Delete the message from sender's collection
+            Constants.CollectionMessage.document(uid).collection(otherUser.uid).document(messageID).delete { error in
+                if let error = error {
+                    completion?(error)
+                    return
+                }
+                
+                // Delete the message from receiver's collection
+                Constants.CollectionMessage.document(otherUser.uid).collection(uid).document(messageID).delete { error in
+                    if let error = error {
+                        completion?(error)
+                        return
+                    }
+                    
+                    // Update recent message data to reflect changes
+                    let data: [String: Any] = [
+                        "text": "", // Clear the message text or update with appropriate default value
+                        "fromID": "",
+                        "toID": "",
+                        "timestamp": Timestamp(date: Date()),
+                        "username": "",
+                        "fullname": "",
+                        "profileImageURL": "",
+                        "new_message": 0,
+                        "imageURL": "",
+                        "videoURL": "",
+                        "audioURL": "",
+                        "locationURL": ""
+                    ]
+                    
+                    // Update recent message data for both users
+                    Constants.CollectionMessage.document(uid).collection("recent-message").document(otherUser.uid).setData(data)
+                    Constants.CollectionMessage.document(otherUser.uid).collection("recent-message").document(uid).setData(data)
+                    
+                    completion?(nil)
+                }
+            }
+        }
+    static func deleteConversation(withUser otherUser: User, completion: ((Error?) -> Void)?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        // Delete all messages from sender's collection with the other user
+        Constants.CollectionMessage.document(uid).collection(otherUser.uid).getDocuments { snapshot, error in
+            if let error = error {
+                completion?(error)
+                return
+            }
+
+            let batch = Firestore.firestore().batch()
+
+            snapshot?.documents.forEach { document in
+                batch.deleteDocument(document.reference)
+            }
+
+            // Commit the batch deletion
+            batch.commit { batchError in
+                if let batchError = batchError {
+                    completion?(batchError)
+                    return
+                }
+
+                // Update recent message data to reflect changes
+                let emptyData: [String: Any] = [
+                    "text": "",
+                    "fromID": "",
+                    "toID": "",
+                    "timestamp": Timestamp(date: Date()),
+                    "username": "",
+                    "fullname": "",
+                    "profileImageURL": "",
+                    "new_message": 0,
+                    "imageURL": "",
+                    "videoURL": "",
+                    "audioURL": "",
+                    "locationURL": ""
+                ]
+
+                // Update recent message data for both users
+                Constants.CollectionMessage.document(uid).collection("recent-message").document(otherUser.uid).setData(emptyData)
+                Constants.CollectionMessage.document(otherUser.uid).collection("recent-message").document(uid).setData(emptyData)
+
+                completion?(nil)
+            }
+        }
+    }
 }
